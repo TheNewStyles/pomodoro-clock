@@ -1,13 +1,27 @@
-var timer = document.getElementById("timer");
 var startButton = document.getElementById("start");
-var startTime = new Date().setMinutes(25);
+var minutesDiv = document.getElementById("minutes");
+var secondsDiv = document.getElementById("seconds");
+var minutesUp = document.getElementById("minutes_work_up");
+var minutesDown = document.getElementById("minutes_work_down");
+var secondsUp = document.getElementById("minutes_break_up");
+var secondsDown = document.getElementById("minutes_break_down");
 
-timer.innerHTML = Math.floor((startTime % (1000 * 60 * 60)) / (1000 * 60)) + "m " + Math.floor((startTime % (1000 * 60)) / 1000) + " s";
+var minutesCount = 25;
 
+minutesUp.addEventListener('click', function () {
+    minutesCount++;
+    minutesDiv.innerText = minutesCount;
+});
+
+minutesDown.addEventListener('click', function () {
+    minutesCount--;
+    minutesDiv.innerText = minutesCount;
+});
 
 startButton.addEventListener('click', function() {
     // Set the date we're counting down to
     var countDownDate = new Date().setMinutes(25);
+
 
 
     // Update the count down every 1 second
@@ -26,7 +40,8 @@ startButton.addEventListener('click', function() {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        timer.innerHTML = minutes + "m " + seconds + "s ";
+        minutesDiv.innerHTML = minutes;
+        secondsDiv.innerHTML = seconds;
 
         // If the count down is finished, write some text
         if (distance < 0) {
