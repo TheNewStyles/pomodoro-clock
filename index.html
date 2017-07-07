@@ -21,12 +21,27 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <button id="start">start</button>
-        <div id="minutes">25 </div><span>m</span>
-        <button id="minutes_work_up">Increase Work Time</button>
-        <button id="minutes_work_down">Decrease Work Time</button>
-        <div id="seconds">00 </div><span>s</span>
+        <div class="timer">
+            <span id="work_minutes">25 </span><span>m</span>
+            <span id="work_seconds">00 </span><span>s</span>
+        </div>
+        <div class="buttons">
+            <button id="minutes_work_up">Increase Work Time</button>
+            <button id="minutes_work_down">Decrease Work Time</button>
+        </div>
 
+        <div class="timer">
+            <span id="break_minutes">05 </span><span>m</span>
+            <span id="break_seconds">00 </span><span>s</span>
+        </div>
+        <div class="buttons">
+            <button id="break_work_up">Increase Break Time</button>
+            <button id="break_work_down">Decrease Break Time</button>
+        </div>
+
+        <div id="start">
+            <button id="start_button">start</button>
+        </div>
 
     </body>
 </html>

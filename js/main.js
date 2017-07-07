@@ -1,52 +1,84 @@
-var startButton = document.getElementById("start");
-var minutesDiv = document.getElementById("minutes");
-var secondsDiv = document.getElementById("seconds");
-var minutesUp = document.getElementById("minutes_work_up");
-var minutesDown = document.getElementById("minutes_work_down");
-var secondsUp = document.getElementById("minutes_break_up");
-var secondsDown = document.getElementById("minutes_break_down");
+var startButton = document.getElementById("start_button");
 
-var minutesCount = 25;
+var workMinutesCount = 25;
+var workMinsDiv = document.getElementById("work_minutes");
+var workSecsDiv = document.getElementById("work_seconds");
+var workMinsUpButton = document.getElementById("minutes_work_up");
+var workMinsDownButton = document.getElementById("minutes_work_down")
 
-minutesUp.addEventListener('click', function () {
-    minutesCount++;
-    minutesDiv.innerText = minutesCount;
+var breakMinutesCount = 5;
+var breakMinsDiv = document.getElementById("break_minutes");
+var breakSecsDiv = document.getElementById("break_seconds");
+var breakMinsUpButton = document.getElementById("break_work_up");
+var breakMinsDownButton = document.getElementById("break_work_down");
+
+
+
+
+workMinsUpButton.addEventListener('click', function () {
+    workMinutesCount++;
+    workMinsDiv.innerText = workMinutesCount;
 });
 
-minutesDown.addEventListener('click', function () {
-    minutesCount--;
-    minutesDiv.innerText = minutesCount;
+workMinsDownButton.addEventListener('click', function () {
+    workMinutesCount--;
+    workMinsDiv.innerText = workMinutesCount;
 });
+
+breakMinsUpButton.addEventListener('click', function () {
+    breakMinutesCount++;
+    breakMinsDiv.innerText = breakMinutesCount;
+});
+
+breakMinsDownButton.addEventListener('click', function () {
+    breakMinutesCount--;
+    breakMinsDiv.innerText = breakMinutesCount;
+});
+
+function getTime(minutes) {
+    return new Date().setMinutes(minutes);
+}
 
 startButton.addEventListener('click', function() {
-    // Set the date we're counting down to
-    var countDownDate = new Date().setMinutes(25);
-
-
+    var countDownDate = getTime(workMinutesCount);
 
     // Update the count down every 1 second
     var x = setInterval(function() {
-
-        // Get todays date and time
         var now = new Date().setMinutes(0);
-
-        // Find the distance between now an the count down date
         var distance = countDownDate - now;
 
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="demo"
-        minutesDiv.innerHTML = minutes;
-        secondsDiv.innerHTML = seconds;
+        workMinsDiv.innerHTML = minutes;
+        workSecsDiv.innerHTML = seconds;
 
         // If the count down is finished, write some text
         if (distance < 0) {
-            clearInterval(x);
-            timer.innerHTML = "EXPIRED";
+            // clearInterval(x);
+            // timer.innerHTML = "EXPIRED";
+
+            var j = setInterval(function() {
+                var now = new Date().setMinutes(0);
+                var distance = countDownDate - now;
+
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="demo"
+                breakMinsDiv.innerHTML = minutes;
+                breakSecsDiv.innerHTML = seconds;
+
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(j);
+                    timer.innerHTML = "EXPIRED";
+
+
+                }
+            }, 1000);
+
         }
     }, 1000);
 }, false);

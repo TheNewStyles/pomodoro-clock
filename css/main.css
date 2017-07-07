@@ -95,10 +95,19 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-#start{
-
+.timer{
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
 }
 
+.buttons{
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
 
 
 
