@@ -21,27 +21,41 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <div class="timer">
-            <span id="work_minutes">25 </span><span>m</span>
-            <span id="work_seconds">00 </span><span>s</span>
-        </div>
-        <div class="buttons">
-            <button id="minutes_work_up">Increase Work Time</button>
-            <button id="minutes_work_down">Decrease Work Time</button>
-        </div>
+        <span>POMODORO CLOCK</span>
+        <section id="work_container">
+            <div class="timer">
+                <div id="work">
+                    <span id="work_minutes">25</span><span>m</span>
+                    <span id="work_seconds">00</span><span>s</span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="minutes_work_up">&#x2b;</button>
+                <button id="minutes_work_down">&minus;</button>
+            </div>
+        </section>
 
-        <div class="timer">
-            <span id="break_minutes">05 </span><span>m</span>
-            <span id="break_seconds">00 </span><span>s</span>
-        </div>
-        <div class="buttons">
-            <button id="break_work_up">Increase Break Time</button>
-            <button id="break_work_down">Decrease Break Time</button>
-        </div>
+        <section id="break_container">
+            <div class="timer">
+                <div id="break">
+                    <span id="break_minutes">5</span><span>m</span>
+                    <span id="break_seconds">00</span><span>s</span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="break_work_up">&#x2b;</button>
+                <button id="break_work_down">&minus;</button>
+            </div>
+        </section>
 
-        <div id="start">
-            <button id="start_button">start</button>
-        </div>
+        <section>
+            <div id="start">
+                <button id="start_button">start</button>
+            </div>
+            <div id="reset">
+                <button id="reset_button">reset</button>
+            </div>
+        </section>
 
     </body>
 </html>
