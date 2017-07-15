@@ -94,30 +94,46 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-.timer{
-    margin: auto;
-    width: 50%;
-    border: 3px solid black;
-    padding: 10px;
+body{
+    background-color: silver;
+    color: white;
 }
 
-.buttons{
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
 }
 
+.flex-item {
+    background: tomato;
+    padding: 5px;
+    width: 500px;
+    height: 500px;
+    margin-top: 10px;
 
+    line-height: 150px;
+    color: white;
+    text-align: center;
+}
 
+/*#start_reset{*/
+    /*display: flex;*/
+/*}*/
 
-
-
-
-
-
-
+/*#start_reset div{*/
+    /*margin: auto;*/
+    /*display: inline-flex;*/
+/*}*/
 
 
 

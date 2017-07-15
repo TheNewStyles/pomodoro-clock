@@ -1,7 +1,6 @@
 //html elements
 var startButton = document.getElementById("start_button");
 var resetButton = document.getElementById("reset_button");
-// var pauseButton = document.getElementById("pause_button");
 //work elements
 var workMinutesCount = 25;
 var workDiv = document.getElementById("work");
@@ -18,47 +17,38 @@ var breakMinsUpButton = document.getElementById("break_work_up");
 var breakMinsDownButton = document.getElementById("break_work_down");
 
 // var pause = false;
-var reset = false;
-var running = false;
-var startUp = true;
+var hasReset = false;
+var isRunning = false;
 
 //event listeners
 workMinsUpButton.addEventListener('click', function () {
-    if(running) return;
+    if(isRunning) return;
     workMinutesCount = increaseTime(workMinutesCount, workMinsDiv);
 });
 
 workMinsDownButton.addEventListener('click', function () {
-    if(running) return;
+    if(isRunning) return;
     workMinutesCount = decreaseTime(workMinutesCount, workMinsDiv);
 });
 
 breakMinsUpButton.addEventListener('click', function () {
-    if(running) return;
+    if(isRunning) return;
     breakMinutesCount = increaseTime(breakMinutesCount, breakMinsDiv);
 });
 
 breakMinsDownButton.addEventListener('click', function () {
-    if(running) return;
+    if(isRunning) return;
     breakMinutesCount = decreaseTime(breakMinutesCount, breakMinsDiv);
 });
 
 startButton.addEventListener('click', function() {
-    if(running) return
+    if(isRunning) return
     startTimer(workMinutesCount, workMinsDiv, workSecsDiv, workDiv);
 }, false);
 
 resetButton.addEventListener('click', function() {
     resetTime(25, 5, "00");
 }, false);
-
-// pauseButton.addEventListener('click', function() {
-//     if(pause){
-//         pause = false;
-//     }else {
-//         pause = true;
-//     }
-// }, false);
 
 //helper functions
 function getTime(minutes) {
@@ -82,11 +72,11 @@ function increaseTime(count, div) {
 
 function startTimer(minutes, minutesDiv, secondsDiv, div) {
     var countDownDate = getTime(minutes);
-    reset = false;
-    running = true;
+    hasReset = false;
+    isRunning = true;
 
     var j = setInterval(function() {
-                if (reset) {
+                if (hasReset) {
                     clearInterval(j);
                     return;
                 }
@@ -116,10 +106,6 @@ function resetTime(workMinutes, breakMinutes, seconds) {
     breakSecsDiv.innerHTML = seconds;
     workMinutesCount = workMinutes;
     breakMinutesCount = breakMinutes;
-    reset = true;
-    running = false;
+    hasReset = true;
+    isRunning = false;
 }
-//
-// function pause() {
-//
-// }

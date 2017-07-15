@@ -21,41 +21,48 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <span>POMODORO CLOCK</span>
-        <section id="work_container">
-            <div class="timer">
-                <div id="work">
-                    <span id="work_minutes">25</span><span>m</span>
-                    <span id="work_seconds">00</span><span>s</span>
-                </div>
-            </div>
-            <div class="buttons">
-                <button id="minutes_work_up">&#x2b;</button>
-                <button id="minutes_work_down">&minus;</button>
-            </div>
-        </section>
+        <span class="flex-container">POMODORO CLOCK</span>
 
-        <section id="break_container">
-            <div class="timer">
-                <div id="break">
-                    <span id="break_minutes">5</span><span>m</span>
-                    <span id="break_seconds">00</span><span>s</span>
+        <div class="flex-container">
+            <section id="work_container" class="flex-item">
+                <div class="timer">
+                    <div id="work">
+                        <span id="work_minutes">25</span><span>m</span>
+                        <span id="work_seconds">00</span><span>s</span>
+                    </div>
                 </div>
-            </div>
-            <div class="buttons">
-                <button id="break_work_up">&#x2b;</button>
-                <button id="break_work_down">&minus;</button>
-            </div>
-        </section>
+                <div class="buttons">
+                    <button id="minutes_work_up">&#x2b;</button>
+                    <button id="minutes_work_down">&minus;</button>
+                </div>
+            </section>
 
-        <section>
-            <div id="start">
-                <button id="start_button">start</button>
-            </div>
-            <div id="reset">
-                <button id="reset_button">reset</button>
-            </div>
-        </section>
+            <section id="break_container" class="flex-item">
+                <div class="timer">
+                    <div id="break">
+                        <span id="break_minutes">5</span><span>m</span>
+                        <span id="break_seconds">00</span><span>s</span>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button id="break_work_up">&#x2b;</button>
+                    <button id="break_work_down">&minus;</button>
+                </div>
+            </section>
+
+            <section id="start_reset" class="flex-item">
+                <div id="start">
+                    <button id="start_button">start</button>
+                </div>
+                <div id="reset">
+                    <button id="reset_button">reset</button>
+                </div>
+            </section>
+        </div>
+
+
+
+
 
     </body>
 </html>
