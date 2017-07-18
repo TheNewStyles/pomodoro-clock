@@ -3,14 +3,12 @@ var startButton = document.getElementById("start_button");
 var resetButton = document.getElementById("reset_button");
 //work elements
 var workMinutesCount = 25;
-var workDiv = document.getElementById("work");
 var workMinsDiv = document.getElementById("work_minutes");
 var workSecsDiv = document.getElementById("work_seconds");
 var workMinsUpButton = document.getElementById("minutes_work_up");
 var workMinsDownButton = document.getElementById("minutes_work_down");
 //break elements
 var breakMinutesCount = 5;
-var breakDiv = document.getElementById("break");
 var breakMinsDiv = document.getElementById("break_minutes");
 var breakSecsDiv = document.getElementById("break_seconds");
 var breakMinsUpButton = document.getElementById("break_work_up");
@@ -42,8 +40,8 @@ breakMinsDownButton.addEventListener('click', function () {
 });
 
 startButton.addEventListener('click', function() {
-    if(isRunning) return
-    startTimer(workMinutesCount, workMinsDiv, workSecsDiv, workDiv);
+    if(isRunning) return;
+    startTimer(workMinutesCount, workMinsDiv, workSecsDiv);
 }, false);
 
 resetButton.addEventListener('click', function() {
@@ -57,9 +55,9 @@ function getTime(minutes) {
 }
 
 function decreaseTime(count, div) {
-    if(count > 1){
+    //if(count > 1){
         count--;
-    }
+    //}
     div.innerText = count;
     return count;
 }
@@ -70,7 +68,7 @@ function increaseTime(count, div) {
     return count;
 }
 
-function startTimer(minutes, minutesDiv, secondsDiv, div) {
+function startTimer(minutes, minutesDiv, secondsDiv) {
     var countDownDate = getTime(minutes);
     hasReset = false;
     isRunning = true;
@@ -92,20 +90,22 @@ function startTimer(minutes, minutesDiv, secondsDiv, div) {
 
                 if (distance < 0) {
                     clearInterval(j);
-                    div.innerHTML = "EXPIRED";
+                    minutesDiv.innerHTML = "00";
+                    secondsDiv.innerHTML = "00";
 
-                    startTimer(breakMinutesCount, breakMinsDiv, breakSecsDiv, breakDiv);
+                    startTimer(breakMinutesCount, breakMinsDiv, breakSecsDiv);
                 }
         }, 1000);
 }
 
 function resetTime(workMinutes, breakMinutes, seconds) {
+    hasReset = true;
+    isRunning = false;
+
     workMinsDiv.innerHTML = workMinutes;
     workSecsDiv.innerHTML = seconds;
     breakMinsDiv.innerHTML = breakMinutes;
     breakSecsDiv.innerHTML = seconds;
     workMinutesCount = workMinutes;
     breakMinutesCount = breakMinutes;
-    hasReset = true;
-    isRunning = false;
 }

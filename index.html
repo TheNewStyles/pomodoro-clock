@@ -6,9 +6,9 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
         <script src="js/vendor/modernizr-3.5.0.min.js" async></script>
         <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous" async></script>
@@ -21,14 +21,15 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-        <span class="flex-container">POMODORO CLOCK</span>
+        <span id="title">POMODORO CLOCK</span>
 
         <div class="flex-container">
             <section id="work_container" class="flex-item">
                 <div class="timer">
                     <div id="work">
-                        <span id="work_minutes">25</span><span>m</span>
-                        <span id="work_seconds">00</span><span>s</span>
+                        <span id="work_minutes">25</span>
+                        <span>:</span>
+                        <span id="work_seconds">00</span>
                     </div>
                 </div>
                 <div class="buttons">
@@ -40,8 +41,9 @@
             <section id="break_container" class="flex-item">
                 <div class="timer">
                     <div id="break">
-                        <span id="break_minutes">5</span><span>m</span>
-                        <span id="break_seconds">00</span><span>s</span>
+                        <span id="break_minutes">5</span>
+                        <span>:</span>
+                        <span id="break_seconds">00</span>
                     </div>
                 </div>
                 <div class="buttons">
@@ -49,16 +51,17 @@
                     <button id="break_work_down">&minus;</button>
                 </div>
             </section>
-
-            <section id="start_reset" class="flex-item">
-                <div id="start">
-                    <button id="start_button">start</button>
-                </div>
-                <div id="reset">
-                    <button id="reset_button">reset</button>
-                </div>
-            </section>
         </div>
+
+        <section id="start_reset">
+            <div id="start">
+                <button id="start_button">START</button>
+            </div>
+            <div id="reset">
+                <button id="reset_button">RESET</button>
+            </div>
+        </section>
+
 
 
 
