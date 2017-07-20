@@ -14,7 +14,8 @@ var breakSecsDiv = document.getElementById("break_seconds");
 var breakMinsUpButton = document.getElementById("break_work_up");
 var breakMinsDownButton = document.getElementById("break_work_down");
 
-// var pause = false;
+var zeroStr = "0";
+var counter=0;
 var hasReset = false;
 var isRunning = false;
 
@@ -45,7 +46,7 @@ startButton.addEventListener('click', function() {
 }, false);
 
 resetButton.addEventListener('click', function() {
-    resetTime(25, 5, "00");
+    resetTime(25, 05, "00");
 }, false);
 
 //helper functions
@@ -54,57 +55,88 @@ function getTime(minutes) {
     return time.setMinutes(time.getMinutes() + minutes);
 }
 
-function decreaseTime(count, div) {
-    //if(count > 1){
-        count--;
-    //}
-    div.innerText = count;
-    return count;
-}
-
-function increaseTime(count, div) {
-    count++;
-    div.innerText = count;
-    return count;
-}
-
 function startTimer(minutes, minutesDiv, secondsDiv) {
     var countDownDate = getTime(minutes);
+    counter++;
     hasReset = false;
     isRunning = true;
 
     var j = setInterval(function() {
-                if (hasReset) {
-                    clearInterval(j);
-                    return;
-                }
 
-                var now = getTime(0);
-                var distance = countDownDate - now;
+        if (hasReset) {
+            clearInterval(j);
+            return;
+        }
 
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var now = getTime(0);
+        var distance = countDownDate - now;
 
-                minutesDiv.innerHTML = minutes;
-                secondsDiv.innerHTML = seconds;
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                if (distance < 0) {
-                    clearInterval(j);
-                    minutesDiv.innerHTML = "00";
-                    secondsDiv.innerHTML = "00";
+        if(minutes <= 9){
+            var minutesStr = minutes+"";
+            minutesDiv.innerHTML = zeroStr+minutesStr;
+        }
+        else{
+            minutesDiv.innerHTML = minutes;
+        }
 
-                    startTimer(breakMinutesCount, breakMinsDiv, breakSecsDiv);
-                }
-        }, 1000);
+        if(seconds <= 9){
+            var secondsStr = seconds+"";
+            secondsDiv.innerHTML = zeroStr+secondsStr;
+        }else{
+            secondsDiv.innerHTML = seconds;
+        }
+
+        if (distance < 0) {
+            clearInterval(j);
+            minutesDiv.innerHTML = "00";
+            secondsDiv.innerHTML = "00";
+
+            if(counter<2){
+                startTimer(breakMinutesCount, breakMinsDiv, breakSecsDiv);
+            }
+        }
+    }, 100);
+}
+
+function decreaseTime(count, div) {
+    if(count > 1){
+        count--;
+    }
+    if(count <= 9){
+        var countStr = count+"";
+        div.innerText = zeroStr+countStr;
+    }else{
+        div.innerText = count;
+    }
+
+    return count;
+}
+
+function increaseTime(count, div) {
+    if(count <= 60){
+        count++;
+    }
+    if(count <= 9){
+        var countStr = count+"";
+        div.innerText = zeroStr+countStr;
+    }else{
+        div.innerText = count;
+    }
+
+    return count;
 }
 
 function resetTime(workMinutes, breakMinutes, seconds) {
     hasReset = true;
     isRunning = false;
+    var breakMinutesStr = breakMinutes+"";
 
     workMinsDiv.innerHTML = workMinutes;
     workSecsDiv.innerHTML = seconds;
-    breakMinsDiv.innerHTML = breakMinutes;
+    breakMinsDiv.innerHTML = zeroStr+breakMinutesStr;
     breakSecsDiv.innerHTML = seconds;
     workMinutesCount = workMinutes;
     breakMinutesCount = breakMinutes;
